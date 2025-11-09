@@ -20,6 +20,8 @@
 
     * { box-sizing: border-box; }
 
+    html { scroll-behavior: smooth; }
+
     body {
       background: var(--bg);
       color: var(--text);
@@ -47,7 +49,6 @@
       color: #fff;
     }
 
-    /* === TOMBOL MENU GARIS TIGA === */
     .menu-btn {
       background: none;
       border: none;
@@ -57,7 +58,6 @@
       z-index: 30;
     }
 
-    /* === SIDEBAR MENU === */
     .menu {
       position: fixed;
       top: 0;
@@ -66,8 +66,8 @@
       height: 100vh;
       background: var(--card);
       box-shadow: -4px 0 12px rgba(0,0,0,0.5);
-      padding: 80px 20px 20px 20px; /* jarak dari atas supaya tidak nabrak header */
-      transition: right 0.3s ease;
+      padding: 80px 20px 20px 20px;
+      transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
       display: flex;
       flex-direction: column;
       gap: 18px;
@@ -75,9 +75,7 @@
       z-index: 25;
     }
 
-    .menu.active {
-      right: 0;
-    }
+    .menu.active { right: 0; }
 
     .menu a {
       color: var(--text);
@@ -86,14 +84,14 @@
       font-size: 16px;
       border-bottom: 1px solid rgba(255,255,255,0.1);
       padding-bottom: 8px;
-      transition: color 0.2s ease;
+      transition: all 0.2s ease;
     }
 
     .menu a:hover {
       color: var(--accent);
+      padding-left: 6px;
     }
 
-    /* === LAYER BLUR DI BELAKANG MENU === */
     .overlay {
       position: fixed;
       top: 0;
@@ -113,9 +111,8 @@
       pointer-events: auto;
     }
 
-    /* === ISI HALAMAN === */
     main {
-      max-width: 800px;
+      max-width: 850px;
       margin: 40px auto;
       padding: 20px;
     }
@@ -159,7 +156,8 @@
     footer {
       text-align: center;
       padding: 20px;
-      background: #020617;
+      background: #0f172a;
+      border-top: 1px solid rgba(255,255,255,0.1);
     }
 
     footer p {
@@ -181,10 +179,8 @@
     <button class="menu-btn" onclick="toggleMenu()">☰</button>
   </header>
 
-  <!-- LAYER BLUR -->
   <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
-  <!-- MENU SAMPING -->
   <nav class="menu" id="menu">
     <a href="index.html">🏠 Beranda</a>
     <a href="Dampak.html">🚫 Dampak Negatif</a>
@@ -193,34 +189,50 @@
   </nav>
 
   <main>
-    <p style="text-align:center;max-width:700px;margin:0 auto 30px auto;">
-      Temukan langkah-langkah praktis dan dukungan yang Anda butuhkan untuk membangun kebiasaan sehat dan menghindari jebakan kecanduan pornografi.
-    </p>
+    <section style="text-align:center; padding:40px 20px; background:#1e293b; border-radius:14px; margin-bottom:30px;">
+      <h2>Selamat Datang di Halaman Edukasi</h2>
+      <p style="color:#94a3b8;">Mari bersama membangun kebiasaan digital yang sehat dan bijak untuk masa depan yang lebih baik.</p>
+    </section>
 
-    <h2>Langkah-langkah Praktis untuk Pencegahan</h2>
+    <h2>15 Langkah Efektif Mencegah Kecanduan Pornografi</h2>
 
-    <div class="card">
-      <h3>🛡️ Batasi Akses Digital</h3>
-      <p>Gunakan filter konten atau aplikasi pemblokir di perangkat Anda untuk membatasi akses ke situs yang memicu.</p>
-    </div>
+    <div class="card"><h3>1️⃣ Batasi Akses Digital</h3><p>Gunakan aplikasi pemblokir atau filter konten di perangkat untuk mengurangi paparan terhadap situs-situs dewasa.</p></div>
 
-    <div class="card">
-      <h3>⚡ Isi Waktu Luang dengan Produktif</h3>
-      <p>Alihkan perhatian dari pemicu dengan terlibat dalam hobi baru atau aktivitas yang Anda nikmati.</p>
-    </div>
+    <div class="card"><h3>2️⃣ Isi Waktu Luang dengan Aktivitas Positif</h3><p>Ganti waktu kosong dengan kegiatan seperti olahraga, membaca buku, atau belajar hal baru yang bermanfaat.</p></div>
 
-    <div class="card">
-      <h3>🎯 Pahami Pemicu Pribadi</h3>
-      <p>Kenali situasi atau kondisi yang sering memicu keinginan Anda, dan kembangkan strategi menghindarinya.</p>
-    </div>
+    <div class="card"><h3>3️⃣ Pahami Pemicu Pribadi</h3><p>Kenali emosi atau situasi yang memicu keinginan menonton konten porno, lalu hindari atau hadapi dengan cara sehat.</p></div>
+
+    <div class="card"><h3>4️⃣ Latih Pengendalian Diri</h3><p>Mulailah dengan hal kecil seperti menunda keinginan menonton video. Setiap kali Anda menolak dorongan, kekuatan diri meningkat.</p></div>
+
+    <div class="card"><h3>5️⃣ Bangun Dukungan Sosial</h3><p>Ceritakan perjuangan Anda kepada teman atau mentor yang bisa dipercaya. Dukungan dari orang lain sangat membantu.</p></div>
+
+    <div class="card"><h3>6️⃣ Kurangi Penggunaan Media Sosial</h3><p>Banyak konten di media sosial yang memicu rasa penasaran. Kurangi waktu bermain atau hapus aplikasi yang sering menggoda.</p></div>
+
+    <div class="card"><h3>7️⃣ Bangun Pola Pikir Positif</h3><p>Alihkan fokus dari rasa bersalah menjadi semangat memperbaiki diri. Perubahan selalu dimulai dari pikiran yang sehat.</p></div>
+
+    <div class="card"><h3>8️⃣ Edukasi Diri Tentang Dampak Pornografi</h3><p>Pahami bahwa pornografi bisa memengaruhi otak dan hubungan sosial. Pengetahuan yang benar memperkuat tekad untuk berhenti.</p></div>
+
+    <div class="card"><h3>9️⃣ Tetapkan Tujuan Hidup yang Jelas</h3><p>Dengan memiliki impian dan arah hidup, Anda lebih termotivasi untuk menghindari hal-hal yang bisa menghambat masa depan.</p></div>
+
+    <div class="card"><h3>🔟 Hindari Lingkungan yang Tidak Sehat</h3><p>Jauhkan diri dari teman atau situasi yang memicu perilaku negatif. Cari lingkungan yang mendukung pertumbuhan diri.</p></div>
+
+    <div class="card"><h3>11️⃣ Buat Rutinitas Harian yang Teratur</h3><p>Isi hari dengan kegiatan terjadwal agar pikiran tidak mudah bosan dan tergoda untuk mencari hiburan yang merugikan.</p></div>
+
+    <div class="card"><h3>12️⃣ Jaga Kesehatan Mental</h3><p>Atasi stres dengan cara sehat seperti jalan-jalan, berbicara dengan orang terdekat, atau melakukan hobi yang menenangkan.</p></div>
+
+    <div class="card"><h3>13️⃣ Kurangi Kesendirian Berlebihan</h3><p>Kesendirian yang terlalu lama bisa memicu kebiasaan buruk. Luangkan waktu bersama keluarga atau teman-teman.</p></div>
+
+    <div class="card"><h3>14️⃣ Gunakan Teknologi dengan Bijak</h3><p>Alihkan penggunaan internet untuk hal produktif seperti belajar daring, menulis, atau membuat konten kreatif.</p></div>
+
+    <div class="card"><h3>15️⃣ Berdoa dan Dekatkan Diri pada Nilai Spiritual</h3><p>Keimanan dan spiritualitas membantu menguatkan hati, menumbuhkan rasa malu, serta menahan diri dari hal negatif.</p></div>
 
     <p style="text-align:center;margin-top:28px;color:var(--muted);">
-      2025 Informasi Edukasi. Konten dihasilkan oleh kelompok 1 kelas XI C SMAN 1 Bengkayang.
+      2025 Informasi Edukasi. Konten disusun oleh Kelompok 1 Kelas XI C SMAN 1 Bengkayang.
     </p>
   </main>
 
   <footer>
-    <p>© 2025 kelompok 1 kelas XI C SMAN 1 Bengkayang — Informasi Edukasi</p>
+    <p>© 2025 Kelompok 1 Kelas XI C SMAN 1 Bengkayang — Informasi Edukasi</p>
   </footer>
 
   <script>
