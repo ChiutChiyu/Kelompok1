@@ -1,11 +1,12 @@
 <!doctype html>
-
 <html lang="id">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Strategi Efektif Mencegah Kecanduan Porno</title>
   <meta name="description" content="Langkah-langkah praktis untuk mencegah kecanduan pornografi dan membangun kebiasaan sehat." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --bg: #0f172a;
@@ -15,143 +16,218 @@
       --accent: #3b82f6;
       --radius: 14px;
       font-family: 'Inter', sans-serif;
-    }* { box-sizing: border-box; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
-}
+    }
 
-header, footer {
-  text-align: center;
-  padding: 20px;
-  background: #020617;
-}
+    * { box-sizing: border-box; }
 
-header h1 {
-  margin: 0;
-  font-size: 26px;
-  font-weight: 700;
-  color: #fff;
-}
+    body {
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      font-family: 'Inter', sans-serif;
+    }
 
-main {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 20px;
-}
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      background: #020617;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
 
-h1, h2, h3 {
-  color: #f1f5f9;
-}
+    header h1 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+    }
 
-h2 {
-  font-size: 22px;
-  margin-top: 28px;
-  text-align: center;
-}
+    /* === TOMBOL MENU GARIS TIGA === */
+    .menu-btn {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 26px;
+      cursor: pointer;
+      z-index: 30;
+    }
 
-h3 {
-  margin-top: 20px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 18px;
-  color: var(--accent);
-}
+    /* === SIDEBAR MENU === */
+    .menu {
+      position: fixed;
+      top: 0;
+      right: -260px;
+      width: 240px;
+      height: 100vh;
+      background: var(--card);
+      box-shadow: -4px 0 12px rgba(0,0,0,0.5);
+      padding: 80px 20px 20px 20px; /* jarak dari atas supaya tidak nabrak header */
+      transition: right 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      border-top-left-radius: 14px;
+      z-index: 25;
+    }
 
-p {
-  margin: 12px 0;
-  color: var(--muted);
-}
+    .menu.active {
+      right: 0;
+    }
 
-.card {
-  background: var(--card);
-  border-radius: var(--radius);
-  padding: 16px 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  margin-bottom: 16px;
-  border-left: 4px solid var(--accent);
-}
+    .menu a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 8px;
+      transition: color 0.2s ease;
+    }
 
-footer p {
-  margin: 0;
-  font-size: 14px;
-  color: var(--muted);
-}
+    .menu a:hover {
+      color: var(--accent);
+    }
 
-@media (max-width: 600px) {
-  main {
-    padding: 14px;
-  }
-  header h1 {
-    font-size: 22px;
-  }
-}
+    /* === LAYER BLUR DI BELAKANG MENU === */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(6px);
+      background: rgba(0,0,0,0.3);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 15;
+    }
 
+    .overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* === ISI HALAMAN === */
+    main {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin-top: 28px;
+      text-align: center;
+      color: #f1f5f9;
+    }
+
+    h3 {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 18px;
+      color: var(--accent);
+    }
+
+    p {
+      margin: 12px 0;
+      color: var(--muted);
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      margin-bottom: 16px;
+      border-left: 4px solid var(--accent);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #020617;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 600px) {
+      main { padding: 14px; }
+      header h1 { font-size: 18px; }
+    }
   </style>
 </head>
+
 <body>
   <header>
-    <h1>Strategi Efektif Mencegah Kecanduan Porno</h1>
+    <h1>Strategi Efektif</h1>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
   </header>
+
+  <!-- LAYER BLUR -->
+  <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+  <!-- MENU SAMPING -->
+  <nav class="menu" id="menu">
+    <a href="index.html">🏠 Beranda</a>
+    <a href="Dampak.html">🚫 Dampak Negatif</a>
+    <a href="tentang.html">ℹ️ Tentang Kami</a>
+    <a href="kontak.html">📞 Kontak</a>
+  </nav>
+
   <main>
-    <p style="text-align:center;max-width:700px;margin:0 auto 30px auto;">Temukan langkah-langkah praktis dan dukungan yang Anda butuhkan untuk membangun kebiasaan sehat dan menghindari jebakan kecanduan pornografi.</p><h2>Langkah-langkah Praktis untuk Pencegahan</h2>
+    <p style="text-align:center;max-width:700px;margin:0 auto 30px auto;">
+      Temukan langkah-langkah praktis dan dukungan yang Anda butuhkan untuk membangun kebiasaan sehat dan menghindari jebakan kecanduan pornografi.
+    </p>
 
-<div class="card">
-  <h3>🛡️ Batasi Akses Digital</h3>
-  <p>Gunakan filter konten atau aplikasi pemblokir di perangkat Anda untuk membatasi akses ke situs yang memicu. Ini membantu menciptakan lingkungan digital yang lebih aman dan mengurangi godaan secara proaktif.</p>
-</div>
+    <h2>Langkah-langkah Praktis untuk Pencegahan</h2>
 
-<div class="card">
-  <h3>⚡ Isi Waktu Luang dengan Produktif</h3>
-  <p>Alihkan perhatian dari pemicu dengan terlibat dalam hobi baru atau aktivitas yang Anda nikmati, seperti olahraga, membaca, atau belajar keterampilan baru. Menjaga diri tetap sibuk dengan hal-hal positif dapat mengurangi keinginan untuk mencari konten negatif.</p>
-</div>
+    <div class="card">
+      <h3>🛡️ Batasi Akses Digital</h3>
+      <p>Gunakan filter konten atau aplikasi pemblokir di perangkat Anda untuk membatasi akses ke situs yang memicu.</p>
+    </div>
 
-<div class="card">
-  <h3>🎯 Pahami Pemicu Pribadi</h3>
-  <p>Kenali situasi, emosi, atau kondisi yang sering memicu keinginan Anda untuk menonton pornografi. Dengan memahami pemicu ini, Anda bisa mengembangkan strategi untuk menghindarinya atau mengelolanya dengan cara yang lebih sehat.</p>
-</div>
+    <div class="card">
+      <h3>⚡ Isi Waktu Luang dengan Produktif</h3>
+      <p>Alihkan perhatian dari pemicu dengan terlibat dalam hobi baru atau aktivitas yang Anda nikmati.</p>
+    </div>
 
-<div class="card">
-  <h3>🤝 Bangun Sistem Dukungan</h3>
-  <p>Berbagi perjuangan Anda dengan teman, keluarga, atau kelompok dukungan yang Anda percaya dapat memberikan kekuatan dan akuntabilitas. Mendapatkan dukungan dari orang lain sangat penting dalam proses pemulihan.</p>
-</div>
+    <div class="card">
+      <h3>🎯 Pahami Pemicu Pribadi</h3>
+      <p>Kenali situasi atau kondisi yang sering memicu keinginan Anda, dan kembangkan strategi menghindarinya.</p>
+    </div>
 
-<div class="card">
-  <h3>💪 Jaga Kesehatan Mental dan Fisik</h3>
-  <p>Pastikan Anda cukup tidur, makan makanan bergizi, dan berolahraga secara teratur. Mengelola stres, kecemasan, atau depresi melalui cara yang sehat akan mengurangi kebutuhan untuk mencari pelarian melalui pornografi.</p>
-</div>
-
-<div class="card">
-  <h3>📋 Tetapkan Batasan yang Jelas</h3>
-  <p>Buat aturan pribadi yang tegas tentang penggunaan internet dan tetapkan tujuan yang realistis untuk mengurangi atau berhenti sama sekali. Menuliskan komitmen ini dapat meningkatkan tekad Anda untuk mematuhinya.</p>
-</div>
-
-<div class="card">
-  <h3>🧠 Cari Bantuan Profesional</h3>
-  <p>Jika Anda merasa kesulitan untuk mengatasi kecanduan sendirian, jangan ragu untuk mencari bantuan dari terapis, konselor, atau psikolog. Mereka dapat memberikan strategi dan dukungan yang disesuaikan untuk situasi Anda.</p>
-</div>
-
-<div class="card">
-  <h3>🕊️ Latih Mindfulness dan Refleksi Diri</h3>
-  <p>Praktikkan mindfulness untuk menjadi lebih sadar akan pikiran dan perasaan Anda tanpa menghakimi. Ini membantu Anda merespons dorongan dengan lebih bijaksana daripada langsung bertindak impulsif.</p>
-</div>
-
-<div class="card">
-  <h3>💞 Tingkatkan Kualitas Hubungan Interpersonal</h3>
-  <p>Fokus pada membangun dan memelihara hubungan yang sehat dan bermakna dengan orang-orang di sekitar Anda. Koneksi sosial yang kuat dapat mengisi kekosongan emosional dan mengurangi kebutuhan akan kepuasan instan dari pornografi.</p>
-</div>
-
-<p style="text-align:center;margin-top:28px;color:var(--muted);">2025 Informasi Edukasi. Konten dihasilkan oleh kelompok 1 kelas XI C SMAN 1 Bengkayang untuk tujuan informasi.</p>
-
+    <p style="text-align:center;margin-top:28px;color:var(--muted);">
+      2025 Informasi Edukasi. Konten dihasilkan oleh kelompok 1 kelas XI C SMAN 1 Bengkayang.
+    </p>
   </main>
+
   <footer>
     <p>© 2025 kelompok 1 kelas XI C SMAN 1 Bengkayang — Informasi Edukasi</p>
   </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('menu').classList.toggle('active');
+      document.getElementById('overlay').classList.toggle('active');
+    }
+  </script>
 </body>
-
 </html>
-
